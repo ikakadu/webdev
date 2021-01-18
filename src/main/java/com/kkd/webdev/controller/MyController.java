@@ -12,15 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class MyController {
 
-    @RequestMapping("/first")
+    @RequestMapping("/ff")
     public String first(){
         return "/first";
     }
 
-    @RequestMapping("/index")
+    /*@RequestMapping("/index")
     public String index(){
         return "index";
-    }
+    }*/
 
     @PostMapping(value = "/demo")
     public String newStu(@RequestBody Person person, HttpServletResponse response) {
