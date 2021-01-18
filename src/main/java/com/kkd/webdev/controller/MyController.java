@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
-@RestController
+@Controller
 public class MyController {
 
     /**
      * 访问 http://127.0.0.1:8080/ff  即可访问resources/templates/first.html文件
+     * 此时，不能用@RestController，只能用@Controller注解
      * @returnresources/templates
      */
     @RequestMapping("/ff")
