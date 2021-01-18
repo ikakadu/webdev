@@ -3,10 +3,7 @@ package com.kkd.webdev.controller;
 
 import com.kkd.webdev.dto.Person;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -36,6 +33,7 @@ public class MyController {
     }*/
 
     @PostMapping(value = "/demo")
+    @ResponseBody
     public String newStu(@RequestBody Person person, HttpServletResponse response) {
         System.out.println("newStu方法进入,"+person);
 //        Person p = (Person)JSON.parse(userName);
