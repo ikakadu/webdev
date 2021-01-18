@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta http-equiv="content-type" content="text/json;charset=utf-8">
+<!--	<meta http-equiv="Access-Control-Allow-Origin" content="http://127.0.0.1:8080/" />-->
+
+	<title>注册信息</title>
+</head>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+<script type="text/javascript">
+
+	$(function() {
+		console.log("进入js代码");
+		//ajax提交
+		$("#ajaxBtn").click(function() {
+			console.log("进入ajax提交方法");
+			var formObject = {};
+			var formArray =$("#myform").serializeArray();
+        	console.log(formArray);
+        	$.each(formArray,function(i,item){
+            formObject[item.name] = item.value;
+        	});
+
+			$.ajax( {
+				url : "http://127.0.0.1:8080/demo",
+				type : 'post',
+				// data:formObject,
+				data: JSON.stringify(formObject),
+				contentType:'application/json',
+				// contentType:'application/json; charset=utf-8',
+				
+				// dataType: "json",
+            success:function(req){
+                alert(req);
+            },
+            error:function(e){
+                alert("错误！！");
+            }
+
+			});
+		});
+
+
+
+	});
+ 
+		
+</script>
+
+
+
+<body>
+	<form  id="myform" name="myform"   action="http://localhost:8080/demo" method="POST">
+		<table>
+			<tr>
+				<td>姓名</td>
+				<td><input type="text" name="userName"></td>
+			</tr>
+			<tr>
+				<td>密码</td>
+				<td><input type="password" name="passWord"></td>
+			</tr>
+			<tr>
+				<td>性别</td>
+				<td>
+					<input type="radio" name="sex" value="male">男
+					<input type="radio" name="sex" value="female">女
+				</td>
+			</tr>
+			
+				<td>
+					<input type="submit" value="submit提交">
+				</td>
+				<td>
+					<input type="button" id="ajaxBtn" value="AJAX提交" />
+				</td>
+				
+			
+
+		</table>
+		
+	</form>
+
+</body>
+</html>
