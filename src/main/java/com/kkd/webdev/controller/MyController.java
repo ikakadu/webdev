@@ -6,17 +6,29 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 
-@Controller
+@RestController
 public class MyController {
 
+    /**
+     * 访问 http://127.0.0.1:8080/ff  即可访问resources/templates/first.html文件
+     * @returnresources/templates
+     */
     @RequestMapping("/ff")
     public String first(){
         return "/first";
     }
 
+    /**
+     * resources/static目录下的html文件可以直接访问
+     * http://127.0.0.1:8080/index.html
+     * @param person
+     * @param response
+     * @return
+     */
     /*@RequestMapping("/index")
     public String index(){
         return "index";
